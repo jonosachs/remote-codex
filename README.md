@@ -7,7 +7,7 @@ Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping)
 
 - Tailscale account with phone and computer connected `https://tailscale.com/`
 - tmux `brew install tmux`
-- tty `brew install ttyd`
+- ttyd `brew install ttyd`
 
 ## Usage
 
