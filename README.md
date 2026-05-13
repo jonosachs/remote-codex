@@ -15,7 +15,8 @@ Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping)
 2. Point your IPhone to web url `http://your-mac-tailscale-name:7681`
 
 
-**TIPS:** \
+**TIPS:**
+
 - Connect Mac to the running codex session with `tmux attach -t codex` in a new terminal window
 - To kill use: `Ctrl-C` in the active ttyd window, then `tmux kill-session -t codex`
 - On IPhone click `Add to Home Screen` on the web url for easy repeat access
