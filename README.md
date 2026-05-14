@@ -8,11 +8,17 @@ Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping)
 - Tailscale account with phone and computer connected `https://tailscale.com/`
 - tmux `brew install tmux`
 - ttyd `brew install ttyd`
+- fastapi `pip install "fastapi[standard]"`
 
 ## Usage
 
-1. On Mac, run `zsh remote_codex.sh` in the terminal to start codex session and attach `ttyd` remote browser at port 7681.
-2. Point your IPhone to web url `http://your-mac-tailscale-name:7681`
+- On Mac, run
+
+`uvicorn main:app --host 0.0.0.0 --port 8000`
+
+- Point your IPhone to web url 
+
+`http://your-mac-tailscale-name:8000`
 
 
 **TIPS:**

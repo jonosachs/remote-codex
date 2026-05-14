@@ -11,6 +11,7 @@ fi
 # Start new (detached) session with codex running in it
 echo "Starting new session"
 echo "To connect from a Mac terminal use: tmux attach -t "$SESSION""
+echo "To kill: Ctrl-C then tmux kill-session -t codex"
 echo "Point phone browser to: http://your-mac-tailscale-name:7681"
 
 tmux new -d -s $SESSION "caffeinate -i "$SESSION""
