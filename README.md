@@ -1,7 +1,8 @@
 # Remote codex session
 
-Shell script to run a remote codex session from your IPhone. \
+Run a remote codex session from your IPhone. \
 Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping) 
+Work in progress..
 
 ## Requirements
 
@@ -12,14 +13,9 @@ Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping)
 
 ## Usage
 
-- On Mac, run
-
-`uvicorn main:app --host 0.0.0.0 --port 8000`
-
-- Point your IPhone to web url 
-
-`http://your-mac-tailscale-name:8000`
-
+- On Mac terminal run: `zsh remote_codex.sh`
+- Then in a another terminal window: `uvicorn main:app --host 0.0.0.0 --port 8000`
+- Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
 
 **TIPS:**
 
