@@ -16,9 +16,9 @@ Work in progress..
 
 1. On Mac terminal run: `zsh remote_codex.sh`
 
-This will setup 2 detached tmux sessions: \
-`codex` - session running codex \ 
-`server` - session running uvicorn to serve a small server and front-end UI to interact with codex
+This will setup 2 detached tmux sessions: 
+- `codex`: session running codex 
+- `server`: session running uvicorn to serve a small server and front-end UI to interact with codex
 
 2. Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
 
