@@ -7,20 +7,25 @@ Work in progress..
 ## Requirements
 
 - Tailscale account with phone and computer connected `https://tailscale.com/`
-- Virtual environment (.venv) with the following installed:
-    - tmux `brew install tmux`
-    - fastapi `pip install "fastapi[standard]"`
-    - uvicorn `pip install uvicorn`
+- Mac
 
-## Usage
+## Usage Instructions
 
-1. On Mac terminal run: `zsh remote_codex.sh`
+1. Activate virtual environment:
+    - `python -m venv .venv`
+    - `source .venv/bin/activate`
+
+2. Install dependencies:
+    - `pip install -r requirements`
+
+3. In your terminal run: 
+    - `zsh remote_codex.sh`
 
 This will setup 2 detached tmux sessions: 
 - `codex`: session running codex 
-- `server`: session running uvicorn to serve a small server and front-end UI to interact with codex
+- `server`: session running uvicorn to serve a small server and front-end UI on port 8000
 
-2. Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
+4. Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
 
 That's it!
 

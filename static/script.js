@@ -46,10 +46,6 @@ async function handleclick() {
   // Clear input textarea
   input.value = "";
 
-  refresh().then(() => {
-    display.scrollTop = display.scrollHeight;
-  });
-
   const response = await post(url, data);
 
   if (!response || response.status != "ok") {
