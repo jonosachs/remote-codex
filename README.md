@@ -14,13 +14,13 @@ Work in progress..
 
 ## Usage
 
-- On Mac terminal run: `zsh remote_codex.sh`
+1. On Mac terminal run: `zsh remote_codex.sh`
 
-This will setup 2 detached tmux sessions:
-`codex` - session running codex
+This will setup 2 detached tmux sessions: \
+`codex` - session running codex \ 
 `server` - session running uvicorn to serve a small server and front-end UI to interact with codex
 
-- Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
+2. Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
 
 That's it!
 
