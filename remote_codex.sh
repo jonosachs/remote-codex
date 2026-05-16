@@ -1,20 +1,40 @@
 #!/bin/zsh
+set -e
 
-SESSION="codex"
+# Ensure running in script directory
+SCRIPT_DIR="${0:A:h}"
+cd "$SCRIPT_DIR"
 
-# Create new, independent tmux session running codex
-if tmux has-session -t $SESSION 2>/dev/null; then
-	echo "Session '"$SESSION"' already running. \nRun tmux kill-session -t "$SESSION""
-	exit 0;
+# Set up variables
+AGENT_SESSION="codex"
+SERVER_SESSION="server"
+AGENT_CMD="codex"
+SERVER_CMD="$SCRIPT_DIR/.venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8000"
+
+# Check if sessions running already
+if tmux has-session -t $AGENT_SESSION 2>/dev/null; then
+	echo "Session '"$AGENT_SESSION"' already running. \nRun tmux kill-session -t "$AGENT_SESSION""
+	exit 1;
 fi
 
-# Start new (detached) session with codex running in it
+if tmux has-session -t $SERVER_SESSION 2>/dev/null; then
+	echo "Session '"$SERVER_SESSION"' already running. \nRun tmux kill-session -t "$SERVER_SESSION""
+	exit 1;
+fi
+
 echo "Starting new session"
-echo "To connect from a Mac terminal use: tmux attach -t "$SESSION""
-echo "To kill: Ctrl-C then tmux kill-session -t codex"
-echo "Point phone browser to: http://your-mac-tailscale-name:7681"
+echo "To connect from a Mac terminal use: tmux attach -t SESSION_NAME" 
+echo "To kill: Ctrl-C then tmux kill-session -t SESSION_NAME"
+echo "Point phone browser to: http://your-mac-tailscale-name:8000"
 
-tmux new -d -s $SESSION "caffeinate -i "$SESSION""
+# Create new, detached tmux session running codex
+# Caffeinate to keep alive
+tmux new -d -s "$AGENT_SESSION" "caffeinate -i $AGENT_CMD"
 
-# Attach shareable web terminal to tmux (defaults to port 7681)
-ttyd -W --client-option fontSize=30 tmux attach -t "$SESSION"
+# Create another detached tmux session and serve FastAPI server and mini front-end within it
+tmux new -d -s "$SERVER_SESSION" "caffeinate -i $SERVER_CMD" 
+
+# Show running tmux processes
+tmux ls
+
+echo "Server running at http://localhost:8000/"
