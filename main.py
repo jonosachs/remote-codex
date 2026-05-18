@@ -10,14 +10,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
-# Serves small front-end with UI for interacting with agent
+# Serves small front-end UI for interacting with agent
 # default port 8000
 @app.get("/")
 def home(request: Request):
     return templates.TemplateResponse(request, "index.html")
 
 
-# Sends text based messages (-l = literal)
+# Endpoint for literal text messages to running tmux session (-l = literal)
 @app.post("/text")
 def send(payload: dict):
     text = payload.get("text", None)
@@ -38,11 +38,12 @@ def send(payload: dict):
     return {"status": "ok"}
 
 
+# Helper
 def send_key(key: str):
     subprocess.run(["tmux", "send-keys", "-t", "codex", key], check=True)
 
 
-# Sends key strokes (escape, enter, etc.)
+# Endpoint for special keys (escape, enter, etc.)
 @app.post("/key")
 def key(payload: dict):
     key = payload.get("key", None)
@@ -58,11 +59,12 @@ def key(payload: dict):
     return {"status": "ok"}
 
 
+# Endpoint fetching tmux pane (full session output)
 @app.get("/output")
 def get():
     try:
         result = subprocess.run(
-            ["tmux", "capture-pan", "-pS", "-", "-t", "codex"],
+            ["tmux", "capture-pane", "-pS", "-", "-t", "codex"],
             capture_output=True,
             text=True,
             check=True,
