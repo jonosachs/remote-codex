@@ -10,7 +10,7 @@ Uses `caffeinate -i` to keep connection alive (prevents Mac from sleeping while 
 
 ## Requirements
 
-- Tailscale account with phone and computer connected to the same tailnet `https://tailscale.com/`
+- Tailscale account with phone and computer connected to the same tailnet: <https://tailscale.com/>
 
 ## Instructions
 
