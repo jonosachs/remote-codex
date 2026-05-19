@@ -1,3 +1,5 @@
+<img src="screenshot.png" width="254" height="539" />
+
 # Remote codex session
 
 Run a remote codex session from your IPhone. \
