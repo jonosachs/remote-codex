@@ -22,19 +22,23 @@ if tmux has-session -t $SERVER_SESSION 2>/dev/null; then
 	exit 1;
 fi
 
-echo "Starting new session"
-echo "To connect from a Mac terminal use: tmux attach -t SESSION_NAME" 
-echo "To kill: Ctrl-C then tmux kill-session -t SESSION_NAME"
-echo "Point phone browser to: http://your-mac-tailscale-name:8000"
-
+echo "---------------------------------------------------------------"
+echo "Starting remote codex.."
+echo "- To attach a Mac terminal use: tmux attach -t SESSION_NAME" 
+echo "- To kill specific session: Ctrl-C or tmux kill-session -t SESSION_NAME"
+echo "- To kill all use: tmux kill-server"
+echo "- Point phone browser to: http://your-mac-tailscale-name:8000"
+echo "- Server running locally at http://localhost:8000/"
+echo "---------------------------------------------------------------"
 # Create new, detached tmux session running codex
-# Caffeinate to keep alive
-tmux new -d -s "$AGENT_SESSION" "caffeinate -i $AGENT_CMD"
+# x, y sized for Iphone
+# caffeinate keeps session alive
+tmux new -d -x 46 -y 32 -s "$AGENT_SESSION" "caffeinate -i $AGENT_CMD"
 
 # Create another detached tmux session and serve FastAPI server and mini front-end within it
 tmux new -d -s "$SERVER_SESSION" "caffeinate -i $SERVER_CMD" 
 
 # Show running tmux processes
+echo "Running sessions:"
 tmux ls
 
-echo "Server running at http://localhost:8000/"

@@ -43,14 +43,18 @@ textarea {
 #display {
   flex: 6;
   min-height: 0;
-  overflow-y: auto;
+  overflow: auto;
   resize: none;
   overflow-x: hidden;
-  overflow-wrap: break-word;
+  overflow-wrap: normal;
   user-select: text;
   pointer-events: auto;
-  white-space: pre-wrap;
-  font-size: 20px;
+  white-space: pre;
+  font-size: 10.5px;
+}
+#display {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.2;
 }
 #input {
   flex: 1;
@@ -59,8 +63,19 @@ textarea {
 }
 button {
   border-radius: 10px;
-  min-height: 75px;
+  min-height: 65px;
   font-size: 20px;
+  text-align: center;
+}
+#buttons {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px 44px 44px;
+  gap: 8px;
+}
+#up,
+#down {
+  font-size: 35px;
+  padding-bottom: 8px;
 }
 #response {
   color: red;

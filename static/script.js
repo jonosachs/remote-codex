@@ -1,20 +1,36 @@
 const display = document.getElementById("display");
 const input = document.getElementById("input");
-const btn = document.getElementById("btn");
+const send_btn = document.getElementById("send");
+const up_btn = document.getElementById("up");
+const down_btn = document.getElementById("down");
+const esc_btn = document.getElementById("esc");
 
 // Special (non-literal) codex keys
 const keys = { esc: "Escape", enter: "Enter", tab: "Tab" };
 
 input.focus();
 
-btn.addEventListener("click", async () => {
-  await handleclick();
+send_btn.addEventListener("click", async () => {
+  await handletext();
+});
+up_btn.addEventListener("click", async () => {
+  await handlekey("Up");
+});
+down_btn.addEventListener("click", async () => {
+  await handlekey("Down");
+});
+esc_btn.addEventListener("click", async () => {
+  await handlekey("Escape");
 });
 
 // Scroll to bottom
 refresh().then(() => {
-  display.scrollTop = display.scrollHeight;
+  scrollToBottom();
 });
+
+function scrollToBottom() {
+  display.scrollTop = display.scrollHeight;
+}
 
 // Refresh temux stdout capture every x milliseconds
 setInterval(refresh, 1000);
@@ -29,19 +45,17 @@ async function refresh() {
   display.textContent = text;
 }
 
-async function handleclick() {
+async function handletext() {
   const command = input.value.trim().toLowerCase();
-  let data = "";
-  let url = "";
 
-  // Check if prompt is a special key or text
+  // Check if prompt is a special key
   if (command in keys) {
-    data = { key: keys[command] };
-    url = "/key";
-  } else {
-    data = { text: input.value };
-    url = "/text";
+    handlekey(keys[command]);
+    return;
   }
+
+  let data = { text: input.value };
+  let url = "/text";
 
   // Clear input textarea
   input.value = "";
@@ -51,6 +65,21 @@ async function handleclick() {
   if (!response || response.status != "ok") {
     console.error("⚠️ Error posting prompt", "\n\nReason:", response.reason);
   }
+
+  refresh();
+  scrollToBottom();
+}
+
+async function handlekey(key) {
+  const url = "/key";
+  const data = { key: key };
+  const response = await post(url, data);
+
+  if (!response || response.status != "ok") {
+    console.error("⚠️ Error posting key", "\n\nReason:", response.reason);
+  }
+
+  refresh();
 }
 
 async function get() {

@@ -1,10 +1,6 @@
 <html>
   <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-
-  scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +14,12 @@
       <h1>remote-codex</h1>
       <div id="display" readonly placeholder="What's on your mind today?"></div>
       <textarea id="input" placeholder="Ask anything"></textarea>
-      <button id="btn">Send</button>
+      <div id="buttons">
+        <button id="send">Send ⏎</button>
+        <button id="up">&#x2B06;&#xFE0E;</button>
+        <button id="down">&#x2B07;&#xFE0E;</button>
+        <button id="esc">Esc</button>
+      </div>
     </div>
     <script type="module" src="/static/script.js"></script>
   </body>
