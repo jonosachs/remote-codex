@@ -35,6 +35,6 @@ That's it!
 ## Tips
 
 - To grab the Tailscale address (MagicDNS) open the Tailscale app on your phone and click on your connected machine. 
-- Connect Mac to running tmux sessions with `tmux attach -t codex` or `tmux attach -t server`
-- To kill sessions use: `Ctrl-C`, then `tmux kill-session -t codex` or `tmux kill-session -t server`
+- Connect computer terminal to running tmux sessions with `tmux attach -t SESSION_NAME`
+- To kill sessions use: `Ctrl-C` on attached session or `tmux kill-session -t SESSION_NAME`
 - On IPhone click `Add to Home Screen` on the web url for easy access in a dedicated browser session
