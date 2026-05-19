@@ -1,9 +1,12 @@
-<img src="screenshot.png" width="254" height="539" />
 
 # Remote codex session
 
 Run a remote codex session from your IPhone. \
 Runs with `caffeinate -i` to keep connection alive (prevents Mac from sleeping while connected to power) 
+
+## Screenshot 
+
+<img src="screenshot.png" width="254" height="539" />
 
 ## Requirements
 
