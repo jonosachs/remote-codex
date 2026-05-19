@@ -22,7 +22,7 @@ Uses `caffeinate -i` to keep connection alive (prevents Mac from sleeping while 
     - `pip install -r requirements`
 
 3. In the project root run: 
-    - `zsh remote_codex.sh`
+    - `zsh start.sh`
 
 This will setup 2 detached tmux sessions: 
 - `codex`: session running codex 
