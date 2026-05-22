@@ -24,9 +24,9 @@ fi
 
 echo "---------------------------------------------------------------"
 echo "Starting remote codex.."
-echo "- To attach a Mac terminal use: tmux attach -t SESSION_NAME" 
-echo "- To kill specific session: Ctrl-C or tmux kill-session -t SESSION_NAME"
-echo "- To kill all use: tmux kill-server"
+echo "- Attach a Mac terminal: tmux attach -t SESSION_NAME" 
+echo "- Kill specific session: tmux kill-session -t SESSION_NAME"
+echo "- Kill all: tmux kill-server"
 echo "- Point phone browser to: http://your-mac-tailscale-name:8000"
 echo "- Server running locally at http://localhost:8000/"
 echo "---------------------------------------------------------------"
