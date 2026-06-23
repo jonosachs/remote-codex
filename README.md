@@ -1,5 +1,5 @@
 
-# Remote codex session
+# Remote codex session 📡
 
 Run a remote codex session from your IPhone. \
 Uses `caffeinate -i` to keep connection alive (prevents Mac from sleeping while connected to power) 
@@ -16,27 +16,36 @@ Uses `caffeinate -i` to keep connection alive (prevents Mac from sleeping while 
 ## Instructions
 
 1. Activate virtual environment:
-    - `python -m venv .venv`
-    - `source .venv/bin/activate`
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+ 
 
 2. Install dependencies:
-    - `pip install -r requirements.txt`
+
+```bash
+pip install -r requirements.txt
+```
 
 3. In the project root run: 
-    - `zsh start.sh`
+
+```bash
+zsh start.sh
+```
 
 This will setup 2 detached tmux sessions: 
 - `codex`: session running codex 
 - `server`: session running uvicorn, serving a small API and front-end UI on port 8000
 
-4. Point your IPhone to web url: `http://your-mac-tailscale-name:8000`
+4. Point your IPhone to web url: <http://your-mac-tailscale-name:8000>
 
 That's it!
 
-## Tips
-
-- To grab your computer's Tailscale address (MagicDNS) open the Tailscale app on your phone and click on your connected machine. 
-- Connect computer terminal to running tmux sessions with `tmux attach -t SESSION_NAME`
-- To kill a session use: `Ctrl-C` on attached session or `tmux kill-session -t SESSION_NAME`
-- Kill all: `tmux kill-server`
-- On IPhone click `Add to Home Screen` on the web url for easy access in a dedicated browser session
+> [!TIP]
+> To grab your computer's Tailscale address (MagicDNS) open the Tailscale app on your phone and click on your connected machine. 
+> Connect computer terminal to running tmux sessions with `tmux attach -t SESSION_NAME`
+> To kill a session use: `Ctrl-C` on attached session or `tmux kill-session -t SESSION_NAME`
+> Kill all: `tmux kill-server`
+> On IPhone click `Add to Home Screen` on the web url for easy access in a dedicated browser session
