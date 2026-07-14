@@ -22,12 +22,15 @@ if tmux has-session -t $SERVER_SESSION 2>/dev/null; then
 	exit 1;
 fi
 
+magic_dns="$(tailscale status --json 2>/dev/null | jq -r '.Self.DNSName // "" | rtrimstr(".")' 2>/dev/null)"
+magic_dns="${magic_dns:-your-mac-tailscale-name}"
+
 echo "---------------------------------------------------------------"
 echo "Starting remote codex.."
 echo "- Attach a Mac terminal: tmux attach -t SESSION_NAME" 
 echo "- Kill specific session: tmux kill-session -t SESSION_NAME"
 echo "- Kill all: tmux kill-server"
-echo "- Point phone browser to: http://your-mac-tailscale-name:8000"
+echo "- Point phone browser to: http://${magic_dns}:8000"
 echo "- Server running locally at http://localhost:8000/"
 echo "---------------------------------------------------------------"
 # Create new, detached tmux session running codex

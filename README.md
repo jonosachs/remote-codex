@@ -35,7 +35,7 @@ pip install -r requirements.txt
 zsh start.sh
 ```
 
-This will setup 2 detached tmux sessions: 
+This will launch 2 detached tmux sessions: 
 - `codex`: session running codex 
 - `server`: session running uvicorn, serving a small API and front-end UI on port 8000
 
@@ -44,13 +44,9 @@ This will setup 2 detached tmux sessions:
 That's it!
 
 > [!TIP]
->
-> To grab your computer's Tailscale address (MagicDNS) open the Tailscale app on your phone and click on your connected machine. 
->
-> Connect computer terminal to running tmux sessions with `tmux attach -t SESSION_NAME`
->
-> To kill a session use: `Ctrl-C` on attached session or `tmux kill-session -t SESSION_NAME`
->
-> Kill all: `tmux kill-server`
->
-> On IPhone click `Add to Home Screen` on the web url for easy access in a dedicated browser session
+
+- To grab your computer's Tailscale address (MagicDNS), open the Tailscale app on your phone and click on your connected machine. 
+- Attach a Mac terminal: `tmux attach -t SESSION_NAME`
+- Kill specific session: `tmux kill-session -t SESSION_NAME`
+- Kill all: `tmux kill-server`
+- On IPhone click `Add to Home Screen` on the web url for easy access in a dedicated browser session
