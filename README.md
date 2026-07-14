@@ -44,6 +44,7 @@ This will launch 2 detached tmux sessions:
 That's it!
 
 > [!TIP]
+>
 
 - To grab your computer's Tailscale address (MagicDNS), open the Tailscale app on your phone and click on your connected machine. 
 - Attach a Mac terminal: `tmux attach -t SESSION_NAME`
